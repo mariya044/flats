@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from user.forms import CustomerForm,SellerForm
 
 
+
 class SignUp_Customer(CreateView):
     form_class = UserCreationForm
     template_name = "registration/signup_customer.html"
