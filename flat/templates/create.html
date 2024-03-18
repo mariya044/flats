@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="shortcut icon" href="#" />
 <div class="container">
      <h2>Create Post</h2>
 <form method="post" class="post-form">
     {% csrf_token %}
+    <link rel="icon" href="media/images/favicon.ico">
     {{form.as_p}}
     <button type="subbmit" class="save bth-default">Save</button>
 </form>

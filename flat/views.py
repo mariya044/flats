@@ -3,7 +3,7 @@ from django.views.generic import DeleteView
 from flat.models import Post
 from flat.forms import PostForm
 from django.contrib.auth.decorators import login_required
-from django.http import response, FileResponse
+from django.http import response, FileResponse, HttpResponse
 
 
 def posts(request):
@@ -28,12 +28,12 @@ def create(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)  # we dont save   it , unless we will add something
-            post.author = request.user
+            post.custom_user = request.user
             post.save()
             form.save_m2m()
             return redirect("posts")
         else:
-            return redirect("posts")
+            return HttpResponse("something is wrong")
     else:
         form = PostForm()
     return render(request, "create.html", {"form": form})
@@ -41,7 +41,7 @@ def create(request):
 
 def edit_post(request,post_id):
     post=get_object_or_404(Post,id=post_id)
-    if request.user !=post.author:
+    if request.user !=post.custom_user:
         return redirect(f"/posts/{post_id}/")
     if request.method=="GET":
         form=PostForm(instance=post)

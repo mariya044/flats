@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "user.apps.UserConfig",
+    "users.apps.UsersConfig",
     "flat.apps.FlatConfig",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'catalog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -117,8 +117,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-AUTH_USER_MODEL="user.CustomUser"
 
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -132,7 +132,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT=BASE_DIR/"media"
 MEDIA_URL="/media/"
-LOGIN_URL="posts"
-LOGOUT_URL="posts"
+
+LOGOUT_REDIRECT_URL="posts"
 LOGIN_REDIRECT_URL="posts"
 

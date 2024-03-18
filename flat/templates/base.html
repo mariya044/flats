@@ -9,10 +9,11 @@
   <header class="border-bottom lh-1 py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
-          {% if user.is_authenticated %}
+          {% if request.user.is_authenticated and request.user.is_staff %}
          <button type="submit" class="nav-link btn btn-link"
                  <style="display: inline; border: none; background: none; box-shadow: none;"><a href="{% url "create" %}">Create post</a></button>
           {% endif %}
+         <link rel="shortcut icon" href="#" />
           {% if request.user.is_authenticated %}
             <h3>User:{{request.user}}</h3>
           {% endif %}
@@ -28,7 +29,7 @@
             <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"></circle><path d="M21 21l-5.2-5.2"></path></svg></button>
             </form>
         </a>
-        {% if user.is_authenticated %}
+        {% if request.user.is_authenticated  %}
             <form action="{% url 'logout' %}" method="post" class="form-inline">
                 {% csrf_token %}
                 <button type="submit" class="nav-link btn btn-link"
@@ -37,8 +38,9 @@
             </form>
             {% else %}
       <ul class="nav">
-        <li class="nav-item"><a  class="btn btn-sm btn-outline-secondary" href="{% url 'signup' %}" class="nav-link link-body-emphasis px-2">SignUp</a></li>
-        <li class="nav-item"><a class="btn btn-sm btn-outline-secondary" href="{% url "login" %}" class="nav-link link-body-emphasis px-2">LogIn</a></li>
+        <li class="nav-item"><a  class="btn btn-sm btn-outline-secondary" href="{% url "signup" %}"
+            class="nav-link link-body-emphasis px-2">SignUp</a></li>
+        <li class="nav-item"><a class="btn btn-sm btn-outline-secondary"  href="{% url "login" %}" class="nav-link link-body-emphasis px-2">LogIn</a></li>
       </ul>
      {% endif %}
 
