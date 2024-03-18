@@ -8,7 +8,7 @@
             <div class="col-m-4">
               <img src="{{post.image.url}}">
             </div>
-                <a class="nav-link" >{{post.author.username}} </a>
+
             <div class="mb-1 text-body-secondary">{{post.created_at}}</div>
             <p class="card-text mb-auto">{{post.text|truncatechars:100}}</p>
              {% if user.is_authenticated %}

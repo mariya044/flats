@@ -1,38 +1,18 @@
-from django.forms import ModelForm, TextInput, PasswordInput
-from .models import Customer,Seller
+from django import forms
+from django.contrib.auth.models import Group
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from user.models import CustomUser
+from django.contrib.auth.models import Group
 
+class CustomUserCreationForm(UserCreationForm):
+    groups = forms.ModelChoiceField(queryset=Group.objects.exclude(name='Администратор'))
 
-class CustomerForm(ModelForm):
     class Meta:
-        model = Customer
-        fields = ("name","password")
-        widgets = ({
-            "name": TextInput(attrs={
-                "class": "form-control",
-                "placeholder": "name"
-            }),
-            "password": PasswordInput(attrs={
-                "class": "form-control",
-                "placeholder": "password "
-            }),
+        model = CustomUser
+        fields = ('username', 'fio',  'birth_date', 'groups')
 
 
-        })
-
-
-class SellerForm(ModelForm):
+class CustomUserChangeForm(UserChangeForm):
     class Meta:
-        model = Seller
-        fields = ("company_name","password")
-        widgets = ({
-            "company_name": TextInput(attrs={
-                "class": "form-control",
-                "placeholder": "name"
-            }),
-            "password": PasswordInput(attrs={
-                "class": "form-control",
-                "placeholder": "password "
-            }),
-
-
-        })
+        model = CustomUser
+        fields = ('username', 'fio', 'birth_date', 'groups')
