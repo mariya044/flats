@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, CreateView
 from flat.models import Post
 from flat.forms import PostForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http import response, FileResponse, HttpResponse
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from users.models import CustomUser
 
 
 def posts(request):
@@ -22,21 +24,23 @@ def posts_view(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return render(request, "posts_view.html", {"post": post})
 
+@permission_required(perm="flat.add_post", raise_exception=True)
+def create( request):
+  if request.method == "POST":
+            form = PostForm(request.POST)
+            if form.is_valid():
+                post = form.save(commit=False)  # we dont save   it , unless we will add something
+                post.custom_user = request.user
+                post.save()
+                form.save_m2m()
+                return redirect("posts")
+            else:
+                return redirect("posts")
+  else:
+            form = PostForm()
+  return render(request, "create.html", {"form": form})
 
-def create(request):
-    if request.method == "POST":
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)  # we dont save   it , unless we will add something
-            post.custom_user = request.user
-            post.save()
-            form.save_m2m()
-            return redirect("posts")
-        else:
-            return HttpResponse("something is wrong")
-    else:
-        form = PostForm()
-    return render(request, "create.html", {"form": form})
+
 
 
 def edit_post(request,post_id):

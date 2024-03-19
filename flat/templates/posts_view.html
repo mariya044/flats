@@ -16,6 +16,9 @@
                         <p class="mt-0.5 md:mt-1 text-basic">Кухня</p>
                     </div><div class="last:mr-0 pt-6 mr-10"><div class="text-h3 font-raleway font-bold flex items-center">{{post.flor}} из {{post.all_floars}}</div>
                   <p class="mt-0.5 md:mt-1 text-basic">Этаж</p></div>
+                {% if user.is_authenticated %}
+                <h2><a href="{% url "contact" %}">Send form </a></h2>
+                {% endif %}
             </div>
             <h1>{{post.text}}</h1>
             <p>{{post.created_at}} by {{post.custom_user}}</p>

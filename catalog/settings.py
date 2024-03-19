@@ -29,11 +29,16 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = []
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_HOST_USER="user@gmail.com"
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "contact.apps.ContactConfig",
     "users.apps.UsersConfig",
     "flat.apps.FlatConfig",
     'django.contrib.admin',
@@ -135,4 +140,5 @@ MEDIA_URL="/media/"
 
 LOGOUT_REDIRECT_URL="posts"
 LOGIN_REDIRECT_URL="posts"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
