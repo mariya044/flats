@@ -6,6 +6,12 @@ from users.models import CustomUser
 
 
 class Post(models.Model):
+        STATUSES = (
+                ("USD","USD"),
+                ("BYN", "BYN"),
+                ("EUR", "EUR"),
+                ("RUB", "RUB")
+        )
         title = models.CharField(max_length=250)
         text = models.TextField()
         created_at = models.DateTimeField(default=timezone.now)
@@ -19,6 +25,10 @@ class Post(models.Model):
         all_square=models.PositiveIntegerField(blank=True, null=True)
         living_square=models.PositiveIntegerField(blank=True, null=True)
         price=models.IntegerField(blank=True, null=True)
+        value= models.CharField(choices=STATUSES, max_length=50, default="USD")
+        rooms=models.PositiveIntegerField(blank=True, null=True)
+        adress=models.CharField(max_length=250)
+
 
         def __str__(self):
             return self.title

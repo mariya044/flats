@@ -24,10 +24,12 @@ def posts_view(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return render(request, "posts_view.html", {"post": post})
 
+
+
 @permission_required(perm="flat.add_post", raise_exception=True)
 def create( request):
   if request.method == "POST":
-            form = PostForm(request.POST)
+            form = PostForm(request.POST,request.FILES)
             if form.is_valid():
                 post = form.save(commit=False)  # we dont save   it , unless we will add something
                 post.custom_user = request.user

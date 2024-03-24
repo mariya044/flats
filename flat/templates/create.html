@@ -3,7 +3,7 @@
 <link rel="shortcut icon" href="#" />
 <div class="container">
      <h2>Create Post</h2>
-<form method="post" class="post-form">
+<form method="post" class="post-form" enctype="multipart/form-data">
     {% csrf_token %}
     <link rel="icon" href="media/images/favicon.ico">
     {{form.as_p}}
