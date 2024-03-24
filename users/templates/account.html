@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+{% for post in posts %}
+        <h1>Личный кабинет</h1>
+        <p>fio:{{post.fio}}</p>
+        <p>email:{{post.email}}</p>
+        {%for flat in flats %}
+        <div class="container">
+<div  class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h1 style="color: black">{{flat.title}}</h1>
+            <h3>{{flat.adress}}</h3>
+            <img src="{{flat.image.url}}" width="600px"  height="550" align="left" >
+            <h2 style="color: black"> Цена:{{flat.price}}{{flat.value}}</h2>
+            <p style="color: black" >Описание:{{flat.text}}</p>
+            <div class="flex flex-wrap md:justify-start -mt-6 md:mb-0 order-2 mb-6">
+                <div class="last:mr-0 pt-6 mr-10"><div class="text-h3 font-raleway font-bold flex items-center" style="color: black">{{flat.all_square}}м²</div>
+                    <p class="mt-0.5 md:mt-1 text-basic">Общая</p></div>
+                <div class="last:mr-0 pt-6 mr-10"><div class="text-h3 font-raleway font-bold flex items-center" style="color: black">{{flat.living_square}}м²</div>
+                    <p class="mt-0.5 md:mt-1 text-basic">Жилая</p></div>
+                    <div class="last:mr-0 pt-6 mr-10"><div class="text-h3 font-raleway font-bold flex items-center" style="color: black">{{flat.kitchen_square}}м²</div>
+                        <p class="mt-0.5 md:mt-1 text-basic">Кухня</p>
+                    </div><div class="last:mr-0 pt-6 mr-10"><div class="text-h3 font-raleway font-bold flex items-center" style="color: black">{{flat.rooms}}</div>
+                       <p class="mt-0.5 md:mt-1 text-basic">Комнат</p></div>
+                    </div><div class="last:mr-0 pt-6 mr-10"><div class="text-h3 font-raleway font-bold flex items-center" style="color: black">{{flat.flor}} из {{flat.all_floars}}</div>
+                  <p class="mt-0.5 md:mt-1 text-basic">Этаж</p></div>
+
+        </div>
+        {% endfor %}
+
+        </form>
+    </div>
+{% endfor %}
+{% endblock %}

@@ -60,7 +60,7 @@ def edit_post(request,post_id):
 
 class PostDeleteView(DeleteView):
     model=Post
-    success_url = "/posts/<int:post_id>/"
+    success_url = "posts"
     template_name="delete_post.html"
 
 
