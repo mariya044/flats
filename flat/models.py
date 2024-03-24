@@ -18,7 +18,6 @@ class Post(models.Model):
         published_at = models.DateTimeField(blank=True, null=True)
         image=models.ImageField(null=False,blank=False,upload_to="images")
         custom_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-
         flor=models.PositiveIntegerField(blank=True, null=True)
         all_floars=models.PositiveIntegerField(blank=True, null=True)
         kitchen_square=models.PositiveIntegerField(blank=True, null=True)

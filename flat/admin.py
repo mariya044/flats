@@ -6,6 +6,7 @@ class PostModelAdmin(admin.ModelAdmin):
     list_display = ["title","text"]
 
 
+
 admin.site.register(Post, PostModelAdmin)
 
 

@@ -9,6 +9,7 @@ class CustomUserCreationForm(UserCreationForm):
     groups = forms.ModelChoiceField(queryset=Group.objects.all())
 
 
+
     class Meta:
         model = CustomUser
         # fields = "__all__"

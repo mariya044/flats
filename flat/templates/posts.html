@@ -13,6 +13,7 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url "posts" post_id=post.id %}" style="color:black">View</a></button>
                   {% if user.is_authenticated %}
 
+
                   <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url "edit_post" post_id=post.id %}" style="color:black">Edit</a></button>
                     {% endif %}
                 </div>

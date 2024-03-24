@@ -58,6 +58,7 @@ def edit_post(request,post_id):
         return redirect("posts")
     return render(request, "edit_post.html", {"form":form,"post": post})
 
+
 class PostDeleteView(DeleteView):
     model=Post
     success_url = "posts"
