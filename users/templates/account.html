@@ -2,9 +2,17 @@
 {% block content %}
     <div class="container">
 {% for post in posts %}
-        <h1>Личный кабинет</h1>
-        <p>fio:{{post.fio}}</p>
-        <p>email:{{post.email}}</p>
+        <style>
+            .text{
+                text-align:center;
+
+                }
+        </style>
+        <div class ="text">
+        <h1>Personal account</h1>
+        </div>
+        <p style="color: black"> fio:</p><p>{{post.fio}}</p>
+        <p style="color: black">email:</p><p>{{post.email}}</p>
         {%for flat in flats %}
         <div class="container">
 <div  class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">

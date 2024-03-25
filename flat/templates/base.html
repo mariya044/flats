@@ -11,11 +11,11 @@
 
           {% if perms.flat.change_post %}
          <button type="submit" class="nav-link btn btn-link"
-                 <style="display: inline; border: none; background: none; box-shadow: none;"><a href="{% url "create" %}" style="color:black" >Создать пост</a></button>
+                 <style="display: inline; border: none; background: none; box-shadow: none;"><a href="{% url "create" %}" style="color:black" >Create post</a></button>
           {% endif %}
          <link rel="shortcut icon" href="#" />
           {% if request.user.is_authenticated %}
-            <h3>Пользователь:<a href="{% url "account" %}" style="color:black">{{request.user}}</a></h3>
+            <h3>User:<a href="{% url "account" %}" style="color:black">{{request.user}}</a></h3>
           {% endif %}
       </div>
 
