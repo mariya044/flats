@@ -1,5 +1,3 @@
-from django.conf import settings
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
 from users.models import CustomUser
@@ -7,7 +5,7 @@ from users.models import CustomUser
 
 class Post(models.Model):
         STATUSES = (
-                ("USD","USD"),
+                ("USD", "USD"),
                 ("BYN", "BYN"),
                 ("EUR", "EUR"),
                 ("RUB", "RUB")
@@ -23,7 +21,7 @@ class Post(models.Model):
         kitchen_square=models.PositiveIntegerField(blank=True, null=True)
         all_square=models.PositiveIntegerField(blank=True, null=True)
         living_square=models.PositiveIntegerField(blank=True, null=True)
-        price=models.IntegerField(blank=True, null=True)
+        price=models.DecimalField(max_digits=10,decimal_places=2)
         value= models.CharField(choices=STATUSES, max_length=50, default="USD")
         rooms=models.PositiveIntegerField(blank=True, null=True)
         adress=models.CharField(max_length=250)
@@ -34,4 +32,3 @@ class Post(models.Model):
 
 
 
-# Create your models here.

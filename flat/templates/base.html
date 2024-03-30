@@ -8,7 +8,6 @@
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
           {% block add %}{% endblock %}
-
           {% if perms.flat.change_post %}
          <button type="submit" class="nav-link btn btn-link"
                  <style="display: inline; border: none; background: none; box-shadow: none;"><a href="{% url "create" %}" style="color:black" >Create post</a></button>
@@ -18,7 +17,6 @@
             <h3>User:<a href="{% url "account" %}" style="color:black">{{request.user}}</a></h3>
           {% endif %}
       </div>
-
       <div class="col-4 text-center">
           <h3><a class="blog-header-logo text-body-emphasis text-decoration-none"  href="{% url "posts" %}" style="color:black" >Flats Minsk</a></h3>
       </div>
