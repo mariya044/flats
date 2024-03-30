@@ -1,5 +1,3 @@
-from django.conf import settings
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
 from users.models import CustomUser
@@ -7,7 +5,7 @@ from users.models import CustomUser
 
 class Post(models.Model):
         STATUSES = (
-                ("USD","USD"),
+                ("USD", "USD"),
                 ("BYN", "BYN"),
                 ("EUR", "EUR"),
                 ("RUB", "RUB")
@@ -34,4 +32,3 @@ class Post(models.Model):
 
 
 
-# Create your models here.
